@@ -1,0 +1,16 @@
+<h1>Posts#index</h1>
+<p>Find me in app/views/posts/index.html.erb</p>
+<% i=0 %>
+<%@elements.each do|element|%>
+  <% if User.find_by(name: element.person)%>
+    <ul>
+      <li>
+      <% i=i+1 %>
+      <%= i %>
+        <%= link_to(element.title, element.link) %><br>
+        場所：<%= element.locate %>　時間：<%= element.date %>/<%= element.time %><br>
+        <%= element.person %>
+      </li>
+    </ul>
+  <% end %>
+<%end%>
