@@ -1,0 +1,31 @@
+<h1>NPO募集サイト</h1>
+<p>イベント一覧</p>
+<div class="users">
+  <h3>サービスに登録している団体</h3>
+  <% @users.each do |user| %>
+    <ul>
+      <li>
+      <%= user.name %>
+      </li>
+    </ul>
+  <% end %>
+  <%= form_tag('/posts/create') do %>
+    <p>サービスに登録する</p>
+    <input type='text' name='name'> <input type='submit'>
+  <% end %>
+</div>
+
+<% i=0 %>
+<%@elements.each do|element|%>
+  <% if User.find_by(name: element.person)%>
+    <ul>
+      <li>
+      <% i=i+1 %>
+      <%= i %>
+        <%= link_to(element.title, element.link) %><br>
+        場所：<%= element.locate %>　日時：<%= element.date %><br>
+        <%= element.person %>
+      </li>
+    </ul>
+  <% end %>
+<%end%>
